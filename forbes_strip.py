@@ -1,3 +1,20 @@
+###########################################################################################################
+#   What this is:       Webpage scraper for the Forbes 2000 List
+#   Purpose:            Take a list of URLs from CSV, scrape the associated webpages for
+#                       the company details, and save as CSV.  Sales Operations will upload
+#                       to Salesforce.
+#   How to use this:    1 - Create a CSV of Forbes 2000 URLs (example below)
+#                       2 - In "ProcessURLs" the constructor __init__(self, TEST_ON) enter the path of
+#                           CSV files for input and output
+#                       3 - Pass 0 or 1 to the constructor to turn test on or off
+#                       4 - Run this script
+#   Example URL:        http://www.forbes.com/companies/actavis
+###########################################################################################################
+
+
+
+
+
 ##########  Some Text Functions  ##########
 import re #for regex on URL
 import time # check run time
@@ -241,7 +258,7 @@ class ProcessURLs:
 
     # Constructor takes filename
     def __init__(self, TEST_ON):
-        if ( TEST_ON != 0):
+        if ( TEST_ON == 0):
             self.inFileName = 'C:/Users/andreas.slovacek.MS/AppData/Local/Programs/Python/Python35/Scripts/Test_URLs.csv'
             self.outFileName = 'test_output.csv'
         else:
@@ -306,19 +323,6 @@ class ProcessURLs:
         return outStr
 
 
-start_time = time.time()
 #x = forbes_killer('http://www.forbes.com/companies/actavis')
 # y = ProcessURLs(1) # Test run
 z = ProcessURLs(0) # live run
-
-end_time = time.time()
-
-seconds = end_time - start_time
-minutes = math.fmod (seconds, 60 )
-hours = math.fmod ( seconds, 60*60 )
-
-
-
-print("\n"*10 + "It took " + str(hours) + " hours\n"
-              + str(minutes) + " minutes\n"
-              + "and " + str(seconds) + " seconds\n")
